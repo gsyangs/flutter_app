@@ -11,6 +11,9 @@ class FourPageState extends State<FourPage>{
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Scaffold(
+      appBar: AppBar(
+        title: Text("SMS"),
+      ),
       body: new Center(
         child: new Text("这是第四个界面"),
       ),

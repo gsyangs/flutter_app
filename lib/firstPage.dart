@@ -13,6 +13,10 @@ class FirstPageState extends State<FirstPage>{
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Scaffold(
+      appBar: AppBar(
+        title: Text("首页"),
+        centerTitle: true,
+      ),
       body: InfiniteListView.separated(
           itemBuilder: _buildItem,
           separatorBuilder: (BuildContext context, int index) => const Divider(height: 2.0),
