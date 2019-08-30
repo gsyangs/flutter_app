@@ -85,6 +85,14 @@ flutter:
   - assets/images/home_icon_wholesale_normal.png
   - assets/images/home_icon_wholesale_selected.png
   - assets/images/home_banner.png
+  - assets/images/home_icon_all.png
+  - assets/images/home_icon_collect.png
+  - assets/images/home_icon_coupon.png
+  - assets/images/home_icon_order.png
+  - assets/images/home_icon_presale.png
+  - assets/images/home_icon_refund.png
+  - assets/images/home_icon_regularpurchase.png
+  - assets/images/home_icon_special.png
 
   - assets/images/2.0x/home_icon_homepage_normal.png
   - assets/images/2.0x/home_icon_homepage_selected.png
@@ -97,6 +105,14 @@ flutter:
   - assets/images/2.0x/home_icon_wholesale_normal.png
   - assets/images/2.0x/home_icon_wholesale_selected.png
   - assets/images/2.0x/home_banner.png
+  - assets/images/2.0x/home_icon_all.png
+  - assets/images/2.0x/home_icon_collect.png
+  - assets/images/2.0x/home_icon_coupon.png
+  - assets/images/2.0x/home_icon_order.png
+  - assets/images/2.0x/home_icon_presale.png
+  - assets/images/2.0x/home_icon_refund.png
+  - assets/images/2.0x/home_icon_regularpurchase.png
+  - assets/images/2.0x/home_icon_special.png
 
   - assets/images/3.0x/home_icon_homepage_normal.png
   - assets/images/3.0x/home_icon_homepage_selected.png
@@ -109,3 +125,11 @@ flutter:
   - assets/images/3.0x/home_icon_wholesale_normal.png
   - assets/images/3.0x/home_icon_wholesale_selected.png
   - assets/images/3.0x/home_banner.png
+  - assets/images/3.0x/home_icon_all.png
+  - assets/images/3.0x/home_icon_collect.png
+  - assets/images/3.0x/home_icon_coupon.png
+  - assets/images/3.0x/home_icon_order.png
+  - assets/images/3.0x/home_icon_presale.png
+  - assets/images/3.0x/home_icon_refund.png
+  - assets/images/3.0x/home_icon_regularpurchase.png
+  - assets/images/3.0x/home_icon_special.png
