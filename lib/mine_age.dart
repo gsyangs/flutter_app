@@ -1,18 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ThirdPage extends StatefulWidget{
+class MinePage extends StatefulWidget{
   @override
-  ThirdPageState createState() => new ThirdPageState();
+  MinePageState createState() => new MinePageState();
 }
 
-class ThirdPageState extends State<ThirdPage>{
+class MinePageState extends State<MinePage>{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Scaffold(
       body: new Center(
-        child: new Text("这是第三个界面"),
+        child: new Text("这是第五个界面"),
       ),
     );
   }

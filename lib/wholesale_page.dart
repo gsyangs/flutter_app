@@ -1,19 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class FourPage extends StatefulWidget{
+class WholesalePage extends StatefulWidget{
   @override
-  FourPageState createState() => new FourPageState();
+  WholesalePageState createState() => new WholesalePageState();
 }
 
-class FourPageState extends State<FourPage>{
+class WholesalePageState extends State<WholesalePage>{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Scaffold(
-      appBar: AppBar(
-        title: Text("SMS"),
-      ),
       body: new Center(
         child: new Text("这是第四个界面"),
       ),

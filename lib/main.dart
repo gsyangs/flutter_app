@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'firstPage.dart';
-import 'secondPage.dart';
-import 'thirdPage.dart';
-import 'fourPage.dart';
+import 'home_page.dart';
+import 'mall_shop_page.dart';
+import 'mall_store_page.dart';
+import 'wholesale_page.dart';
+import 'mine_age.dart';
 
 void main() => runApp(MyApp());
 
@@ -25,15 +26,26 @@ class Tabs extends StatefulWidget{
 class _Tab extends State<Tabs>{
 
   var _currentIndex = 0;
-
-  var _children = [new FirstPage(),new SecondPage(),new ThirdPage(),new FourPage()];
-
+  var _children = [new HomePage(),new SmallShopPage(),new MallStorePage(),new WholesalePage(),new MinePage()];
   var _list_bar = [
-    new BottomNavigationBarItem(icon: new Icon(Icons.camera),title: Text('camera'),backgroundColor: Colors.deepOrange[300],),
-    new BottomNavigationBarItem(icon: new Icon(Icons.wifi),title: Text('wifi'),backgroundColor: Colors.deepOrange[300],),
-    new BottomNavigationBarItem(icon: new Icon(Icons.access_alarm),title: Text('alarm'),backgroundColor: Colors.deepOrange[300],),
-    new BottomNavigationBarItem(icon: new Icon(Icons.sms),title: Text('sms'),backgroundColor: Colors.deepOrange[300],)
+    new BottomNavigationBarItem(icon: Image.asset("assets/images/home_icon_homepage_normal.png"),
+        title: Text('首页'),
+        activeIcon: Image.asset("assets/images/home_icon_homepage_selected.png")),
+    new BottomNavigationBarItem(icon: Image.asset("assets/images/home_icon_mall_normal.png"),
+        title: Text('小店'),
+        activeIcon: Image.asset("assets/images/home_icon_mall_selected.png")),
+    new BottomNavigationBarItem(icon: Image.asset("assets/images/home_icon_store_normal.png"),
+        title: Text('商城'),
+        activeIcon: Image.asset("assets/images/home_icon_store_selected.png")),
+    new BottomNavigationBarItem(icon: Image.asset("assets/images/home_icon_wholesale_normal.png"),
+        title: Text('批发'),
+        activeIcon: Image.asset("assets/images/home_icon_wholesale_selected.png")),
+    new BottomNavigationBarItem(icon: Image.asset("assets/images/home_icon_mine_normal.png"),
+        title: Text('我的'),
+        activeIcon: Image.asset("assets/images/home_icon_mine_selected.png"))
   ];
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +53,8 @@ class _Tab extends State<Tabs>{
     return new Scaffold(
       bottomNavigationBar: new BottomNavigationBar(
         items: _list_bar,
-        type: BottomNavigationBarType.fixed,
+        type: BottomNavigationBarType.shifting,
+        selectedItemColor: const Color(0xffe62d2d),
         currentIndex: _currentIndex,
         onTap: (index){
           setState(() {

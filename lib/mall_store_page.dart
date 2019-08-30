@@ -1,18 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class SecondPage extends StatefulWidget{
+class MallStorePage extends StatefulWidget{
   @override
-  SecondPageState createState() => new SecondPageState();
+  MallStorePageState createState() => new MallStorePageState();
 }
 
-class SecondPageState extends State<SecondPage>{
+class MallStorePageState extends State<MallStorePage>{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Scaffold(
       body: new Center(
-        child: new Text("这是第二个界面"),
+        child: new Text("这是第三个界面"),
       ),
     );
   }
