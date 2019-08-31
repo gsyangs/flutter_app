@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'home_page.dart';
-import 'mall_shop_page.dart';
-import 'mall_store_page.dart';
-import 'wholesale_page.dart';
-import 'mine_age.dart';
+import 'package:flutter_app/ui/home_page.dart';
+import 'package:flutter_app/ui/mall_shop_page.dart';
+import 'package:flutter_app/ui/mall_store_page.dart';
+import 'package:flutter_app/ui/wholesale_page.dart';
+import 'package:flutter_app/ui/mine_age.dart';
 
 void main() => runApp(MyApp());
 
