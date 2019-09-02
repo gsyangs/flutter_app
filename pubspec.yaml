@@ -95,6 +95,8 @@ flutter:
   - assets/images/home_icon_regularpurchase.png
   - assets/images/home_icon_special.png
 
+  - assets/images/bank_zs.png
+
   - assets/images/2.0x/home_icon_homepage_normal.png
   - assets/images/2.0x/home_icon_homepage_selected.png
   - assets/images/2.0x/home_icon_mall_normal.png
