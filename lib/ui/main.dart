@@ -1,18 +1,28 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter/services.dart';
 import 'package:flutter_app/ui/home_page.dart';
 import 'package:flutter_app/ui/mall_shop_page.dart';
 import 'package:flutter_app/ui/mall_store_page.dart';
 import 'package:flutter_app/ui/wholesale_page.dart';
 import 'package:flutter_app/ui/mine_age.dart';
 
-void main() => runApp(MyApp());
+void main(){
+  runApp(MyApp());
+}
+
 
 class MyApp extends StatelessWidget {
+
+  //statusBar设置为透明，去除半透明遮罩
+  final SystemUiOverlayStyle _style = SystemUiOverlayStyle(statusBarColor: Colors.transparent);
+
   @override
   Widget build(BuildContext context) {
+
+    //将style设置到app
+    SystemChrome.setSystemUIOverlayStyle(_style);
+
     return MaterialApp(
-      theme: ThemeData(primaryColor: Colors.deepOrange[300]),
       home: new Tabs(),
     );
   }

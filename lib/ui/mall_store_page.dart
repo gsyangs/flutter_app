@@ -15,8 +15,7 @@ class MallStorePageState extends State<MallStorePage>{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return new Scaffold(
-      body: Container(
+    return  Container(
         margin: EdgeInsets.fromLTRB(20, 40, 20, 20),
 
         child: Row(
@@ -36,11 +35,11 @@ class MallStorePageState extends State<MallStorePage>{
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                        data.userName,
-                        style: TextStyle(
-                          color: Colors.black87,
-                          fontSize: 16,
-                        ),
+                      data.userName,
+                      style: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 16,
+                      ),
                     ),
                     Padding(padding: EdgeInsets.only(top: 10),),
                     Text(
@@ -76,7 +75,6 @@ class MallStorePageState extends State<MallStorePage>{
             )
           ],
         )
-      ),
     );
   }
 
