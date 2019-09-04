@@ -63,7 +63,7 @@ class _Tab extends State<Tabs>{
     return new Scaffold(
       bottomNavigationBar: new BottomNavigationBar(
         items: _list_bar,
-        type: BottomNavigationBarType.shifting,
+        type: BottomNavigationBarType.fixed,
         selectedItemColor: const Color(0xffe62d2d),
         currentIndex: _currentIndex,
         onTap: (index){
