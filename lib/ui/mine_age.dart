@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import '../entity/pet_card_view_model.dart';
 import '../mock/mock_data.dart';
 
@@ -183,10 +184,20 @@ class MinePageState extends State<MinePage>{
         children: <Widget>[
           Row(
             children: <Widget>[
-              Icon(
-                Icons.message,
-                size: 16,
-                color: Color(0xFF999999),
+              GestureDetector(
+                onTap:(){
+                  Fluttertoast.showToast(
+                      msg: "点击了消息",
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.BOTTOM,
+                      fontSize: 16.0
+                  );
+                },
+                child: Icon(
+                  Icons.message,
+                  size: 16,
+                  color: Color(0xFF999999),
+                ),
               ),
               Padding(padding: EdgeInsets.only(left: 6)),
               Text(

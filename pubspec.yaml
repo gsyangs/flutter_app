@@ -28,6 +28,7 @@ dependencies:
   json2entity: ^1.0.6
   path_drawing: ^0.4.0
   flutter_screenutil: ^0.4.2
+  fluttertoast: ^3.1.3
 
 dev_dependencies:
   flutter_test:
@@ -97,6 +98,9 @@ flutter:
   - assets/images/home_icon_special.png
 
   - assets/images/bank_zs.png
+  - assets/images/home_nav_icon_cart.png
+  - assets/images/home_icon_search_small.png
+  - assets/images/home_nav_icon_scan.png
 
   - assets/images/2.0x/home_icon_homepage_normal.png
   - assets/images/2.0x/home_icon_homepage_selected.png
