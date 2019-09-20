@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 //首页
 class HomePage extends StatefulWidget{
@@ -11,7 +12,7 @@ class HomePage extends StatefulWidget{
 class HomePageState extends State<HomePage>{
 
   List<Widget> imageList = List();
-  List<Widget> marqueeData = new List();
+  List<List<String>> bannerData = new List();
 
   @override
   void initState() {
@@ -33,11 +34,11 @@ class HomePageState extends State<HomePage>{
       fit: BoxFit.fill,
     ));
 
-    marqueeData
-    ..add(Text("太疯狂！IPhone X首批1分钟卖光。",style: TextStyle(color: Colors.black),))
-    ..add(Text("家人给2岁孩子喝这个，孩子智力倒退10岁!",style: TextStyle(color: Colors.black),))
-    ..add(Text("自助餐里面的潜规则，想要吃回本其实很简单。",style: TextStyle(color: Colors.black),))
-    ..add(Text("简直是白菜价！日本玩家33万甩卖15万张游戏王卡。",style: TextStyle(color: Colors.black),));
+
+    bannerData
+    ..add(new List()..add("太疯狂！IPhone X首批1分钟卖光。")..add("家人给2岁孩子喝这个，孩子智力倒退10岁!"))
+    ..add(new List()..add("自助餐里面的潜规则，想要吃回本其实很简单。")..add("简直是白菜价！日本玩家33万甩卖15万张游戏王卡"))
+    ..add(new List()..add("iPhone 11三摄像头怎么样？余承东：抄华为的。"));
 
     super.initState();
   }
@@ -65,7 +66,9 @@ class HomePageState extends State<HomePage>{
               ),
               SliverList(
                 delegate: SliverChildListDelegate([
-                  contextList(),
+                  menuListBuilder(),
+                  contextList()
+//                  VerticalBanner(bannerData: bannerData),
                 ]),
               ),
             ],
@@ -145,11 +148,10 @@ class HomePageState extends State<HomePage>{
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          marqueeeView(),
-//          Container(
-//            height: 100,
-//            child: marqueeeView(),
-//          ),
+          Container(
+            height: 100,
+            child: marqueeeView(),
+          ),
         ],
       ),
     );
@@ -223,32 +225,35 @@ class HomePageState extends State<HomePage>{
   Widget swiperBuilder(BuildContext context, int index) {
     return (imageList[index]);
   }
+  List<String> parseJson(int index) {
+    return bannerData[index];
+  }
 
   //滚动的marquee
   Widget marqueeeView(){
     return Swiper(
-      itemCount: marqueeData.length,
-      itemBuilder: marqueeeBuilder,
-      pagination: SwiperPagination(
-          alignment: Alignment.bottomCenter,
-          margin: const EdgeInsets.fromLTRB(0, 0, 0, 20),
-          builder: DotSwiperPaginationBuilder(
-              color: Colors.white,
-              activeColor: Colors.white54,
-              size: 4,
-              activeSize: 7
-          )
-      ),
-      controller: SwiperController(),
+      itemCount: bannerData.length,
+      itemBuilder: (BuildContext context,int index){
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: parseJson(index).map((data){
+            return GestureDetector(
+              onTap:(){
+                Fluttertoast.showToast(
+                    msg: data,
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    fontSize: 16.0
+                );
+              },
+              child: Text(data,style: TextStyle(color: Colors.black)),
+            );
+          }).toList(),
+        );
+      },
       scrollDirection: Axis.vertical,
       autoplay: true,
-      onTap: (index) => print('点击了第$index'),
     );
-  }
-
-  //设置banner 对应的值
-  Widget marqueeeBuilder(BuildContext context, int index) {
-    return marqueeData[index];
   }
 
   //banner 下弧度
@@ -391,7 +396,5 @@ class HomePageState extends State<HomePage>{
       )
     );
   }
-
-
 
 }
