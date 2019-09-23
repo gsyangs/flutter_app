@@ -37,13 +37,11 @@ class HomePageState extends State<HomePage>{
 
     bannerData
     ..add(new List()..add("太疯狂！IPhone X首批1分钟卖光。")..add("家人给2岁孩子喝这个，孩子智力倒退10岁!"))
-    ..add(new List()..add("自助餐里面的潜规则，想要吃回本其实很简单。")..add("简直是白菜价！日本玩家33万甩卖15万张游戏王卡"))
+    ..add(new List()..add("自助餐里面的潜规则，想要吃回本其实很简单。")..add("简直是白菜价！日本玩家33万甩卖15万张游戏王卡游戏王卡游戏王卡"))
     ..add(new List()..add("iPhone 11三摄像头怎么样？余承东：抄华为的。"));
 
     super.initState();
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +66,6 @@ class HomePageState extends State<HomePage>{
                 delegate: SliverChildListDelegate([
                   menuListBuilder(),
                   contextList()
-//                  VerticalBanner(bannerData: bannerData),
                 ]),
               ),
             ],
@@ -145,56 +142,26 @@ class HomePageState extends State<HomePage>{
 
   Widget contextList(){
     return Container(
-      child: Column(
+      height: 70,
+      margin: EdgeInsets.all(10),
+      padding: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
+          boxShadow:[
+            BoxShadow(
+                blurRadius: 6,
+                color: Color.fromARGB(20, 0, 0, 0),
+                spreadRadius: 4
+            )
+          ]
+      ),
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Container(
-            height: 100,
-            child: marqueeeView(),
-          ),
+          Image.asset("assets/images/home_images_inform.png"),
+          new Expanded(child: marqueeeView()),
         ],
-      ),
-    );
-  }
-
-  //初始化输入框
-  Widget textFieldView(){
-    final controller = TextEditingController();
-    controller.addListener(() {
-      print('input ${controller.text}');
-    });
-    return Container(
-        alignment: Alignment.center,
-        margin: EdgeInsets.only(top: 20),
-        padding: EdgeInsets.only(left: 15,right: 15),
-        width: 250,
-        height: 40,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: new BorderRadius.all(Radius.circular(5))
-        ),
-        child: buildTextField(controller)
-    );
-  }
-
-  //输入框样式
-  Widget buildTextField(TextEditingController controller) {
-    return TextField(
-      style: TextStyle(
-          fontSize: 14,
-          color: Colors.black87
-      ),
-      maxLines: 1,
-      controller: controller,
-      keyboardType: TextInputType.text,
-      decoration: InputDecoration(
-          border: InputBorder.none,
-          hintMaxLines: 1,
-          hintText: "请输入要要查询的商品",
-          hintStyle: TextStyle(
-              fontSize: 14,
-              color: Colors.black38
-          )
       ),
     );
   }
@@ -231,28 +198,32 @@ class HomePageState extends State<HomePage>{
 
   //滚动的marquee
   Widget marqueeeView(){
-    return Swiper(
-      itemCount: bannerData.length,
-      itemBuilder: (BuildContext context,int index){
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: parseJson(index).map((data){
-            return GestureDetector(
-              onTap:(){
-                Fluttertoast.showToast(
-                    msg: data,
-                    toastLength: Toast.LENGTH_SHORT,
-                    gravity: ToastGravity.BOTTOM,
-                    fontSize: 16.0
-                );
-              },
-              child: Text(data,style: TextStyle(color: Colors.black)),
-            );
-          }).toList(),
-        );
-      },
-      scrollDirection: Axis.vertical,
-      autoplay: true,
+    return Container(
+      height: 70,
+      margin: EdgeInsets.only(left: 10),
+      child: Swiper(
+        itemCount: bannerData.length,
+        scrollDirection: Axis.vertical,
+        autoplay: true,
+        itemBuilder: (BuildContext context,int index){
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: parseJson(index).map((data){
+              return GestureDetector(
+                onTap:(){
+                  Fluttertoast.showToast(
+                      msg: data,
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.BOTTOM,
+                      fontSize: 16.0
+                  );
+                },
+                child: Text(data,style: TextStyle(color: Colors.black),maxLines: 1,overflow: TextOverflow.ellipsis,),
+              );
+            }).toList(),
+          );
+        },
+      ),
     );
   }
 
@@ -281,6 +252,17 @@ class HomePageState extends State<HomePage>{
   //初始化 功能菜单
   Widget menuListBuilder(){
     return Container(
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(8),
+            boxShadow:[
+              BoxShadow(
+                  blurRadius: 6,
+                  color: Color.fromARGB(20, 0, 0, 0),
+                  spreadRadius: 4
+              )
+            ]
+        ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -396,5 +378,48 @@ class HomePageState extends State<HomePage>{
       )
     );
   }
+
+  //初始化输入框
+  Widget textFieldView(){
+    final controller = TextEditingController();
+    controller.addListener(() {
+      print('input ${controller.text}');
+    });
+    return Container(
+        alignment: Alignment.center,
+        margin: EdgeInsets.only(top: 20),
+        padding: EdgeInsets.only(left: 15,right: 15),
+        width: 250,
+        height: 40,
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: new BorderRadius.all(Radius.circular(5))
+        ),
+        child: buildTextField(controller)
+    );
+  }
+
+  //输入框样式
+  Widget buildTextField(TextEditingController controller) {
+    return TextField(
+      style: TextStyle(
+          fontSize: 14,
+          color: Colors.black87
+      ),
+      maxLines: 1,
+      controller: controller,
+      keyboardType: TextInputType.text,
+      decoration: InputDecoration(
+          border: InputBorder.none,
+          hintMaxLines: 1,
+          hintText: "请输入要要查询的商品",
+          hintStyle: TextStyle(
+              fontSize: 14,
+              color: Colors.black38
+          )
+      ),
+    );
+  }
+
 
 }
