@@ -101,6 +101,9 @@ flutter:
   - assets/images/home_icon_search_small.png
   - assets/images/home_nav_icon_scan.png
   - assets/images/home_images_inform.png
+  - assets/images/home_icon_buy_normal.png
+  - assets/images/home_images_derocation_presale.png
+  - assets/images/home_images_derocation_special.png
 
   - assets/images/2.0x/home_icon_homepage_normal.png
   - assets/images/2.0x/home_icon_homepage_selected.png
@@ -122,6 +125,9 @@ flutter:
   - assets/images/2.0x/home_icon_regularpurchase.png
   - assets/images/2.0x/home_icon_special.png
   - assets/images/2.0x/home_images_inform.png
+  - assets/images/2.0x/home_icon_buy_normal.png
+  - assets/images/2.0x/home_images_derocation_presale.png
+  - assets/images/2.0x/home_images_derocation_special.png
 
   - assets/images/3.0x/home_icon_homepage_normal.png
   - assets/images/3.0x/home_icon_homepage_selected.png
@@ -143,3 +149,6 @@ flutter:
   - assets/images/3.0x/home_icon_regularpurchase.png
   - assets/images/3.0x/home_icon_special.png
   - assets/images/3.0x/home_images_inform.png
+  - assets/images/3.0x/home_icon_buy_normal.png
+  - assets/images/3.0x/home_images_derocation_presale.png
+  - assets/images/3.0x/home_images_derocation_special.png

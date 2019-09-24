@@ -12,6 +12,11 @@ class SmallShopPageState extends State<SmallShopPage>{
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Scaffold(
+      appBar: AppBar(
+        title: Text("商品列表"),
+        centerTitle: true,
+        backgroundColor: Color(0xffe62d2d),
+      ),
       body: new Center(
         child: new Text("这是第二个界面"),
       ),

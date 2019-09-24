@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import '../entity/goods_item_model.dart';
 
 //首页
 class HomePage extends StatefulWidget{
@@ -11,8 +12,14 @@ class HomePage extends StatefulWidget{
 
 class HomePageState extends State<HomePage>{
 
+  //滚动banner图片
   List<Widget> imageList = List();
+  //跑马灯广告
   List<List<String>> bannerData = new List();
+  //预售商品
+  List<GoodsItem> goodsData = new List();
+  //限时特价
+  List<GoodsItem> goodsData1 = new List();
 
   @override
   void initState() {
@@ -34,11 +41,21 @@ class HomePageState extends State<HomePage>{
       fit: BoxFit.fill,
     ));
 
-
     bannerData
     ..add(new List()..add("太疯狂！IPhone X首批1分钟卖光。")..add("家人给2岁孩子喝这个，孩子智力倒退10岁!"))
     ..add(new List()..add("自助餐里面的潜规则，想要吃回本其实很简单。")..add("简直是白菜价！日本玩家33万甩卖15万张游戏王卡游戏王卡游戏王卡"))
     ..add(new List()..add("iPhone 11三摄像头怎么样？余承东：抄华为的。"));
+
+    goodsData
+      ..add(new GoodsItem(goodsId: "",goodsName: "8月预售组合特惠活动",goodsImage: "http://www.lkhs.cn/UserFile/ProductMain/20160505112642527f.gif",goodsPrice: 88.88,goodsSpec: "",isSelect: false,minNumber: 1,maxNumber: 10,number: 1))
+      ..add(new GoodsItem(goodsId: "",goodsName: "8月预售组合特惠活动",goodsImage: "http://www.lkhs.cn/UserFile/ProductMain/20160505112642527f.gif",goodsPrice: 88.88,goodsSpec: "",isSelect: false,minNumber: 1,maxNumber: 10,number: 1))
+      ..add(new GoodsItem(goodsId: "",goodsName: "8月预售组合特惠活动",goodsImage: "http://www.lkhs.cn/UserFile/ProductMain/20160505112642527f.gif",goodsPrice: 88.88,goodsSpec: "",isSelect: false,minNumber: 1,maxNumber: 10,number: 1));
+
+    goodsData1
+      ..add(new GoodsItem(goodsId: "",goodsName: "8月预售组合特惠活动",goodsImage: "http://www.lkhs.cn/UserFile/ProductMain/20160505112642527f.gif",goodsPrice: 88.88,goodsSpec: "",isSelect: false,minNumber: 1,maxNumber: 10,number: 1))
+      ..add(new GoodsItem(goodsId: "",goodsName: "8月预售组合特惠活动",goodsImage: "http://www.lkhs.cn/UserFile/ProductMain/20160505112642527f.gif",goodsPrice: 88.88,goodsSpec: "",isSelect: false,minNumber: 1,maxNumber: 10,number: 1))
+      ..add(new GoodsItem(goodsId: "",goodsName: "8月预售组合特惠活动",goodsImage: "http://www.lkhs.cn/UserFile/ProductMain/20160505112642527f.gif",goodsPrice: 88.88,goodsSpec: "",isSelect: false,minNumber: 1,maxNumber: 10,number: 1))
+      ..add(new GoodsItem(goodsId: "",goodsName: "8月预售组合特惠活动",goodsImage: "http://www.lkhs.cn/UserFile/ProductMain/20160505112642527f.gif",goodsPrice: 88.88,goodsSpec: "",isSelect: false,minNumber: 1,maxNumber: 10,number: 1));
 
     super.initState();
   }
@@ -65,7 +82,11 @@ class HomePageState extends State<HomePage>{
               SliverList(
                 delegate: SliverChildListDelegate([
                   menuListBuilder(),
-                  contextList()
+                  contextList(),
+                  Image.asset("assets/images/home_images_derocation_presale.png",height: 40,),
+                  goodsListBuilder1(),
+                  Image.asset("assets/images/home_images_derocation_special.png",height: 40,),
+                  goodsListBuilder2()
                 ]),
               ),
             ],
@@ -143,7 +164,7 @@ class HomePageState extends State<HomePage>{
   Widget contextList(){
     return Container(
       height: 70,
-      margin: EdgeInsets.all(10),
+      margin: EdgeInsets.fromLTRB(10,20,10,10),
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
           color: Colors.white,
@@ -157,9 +178,9 @@ class HomePageState extends State<HomePage>{
           ]
       ),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Image.asset("assets/images/home_images_inform.png"),
+          Image.asset("assets/images/home_images_inform.png",height: 40, width: 40,),
           new Expanded(child: marqueeeView()),
         ],
       ),
@@ -192,6 +213,7 @@ class HomePageState extends State<HomePage>{
   Widget swiperBuilder(BuildContext context, int index) {
     return (imageList[index]);
   }
+
   List<String> parseJson(int index) {
     return bannerData[index];
   }
@@ -421,5 +443,92 @@ class HomePageState extends State<HomePage>{
     );
   }
 
+  //预售商品
+  Widget goodsListBuilder1(){
+    return Container(
+      height: 430,
+      margin: EdgeInsets.only(bottom: 15),
+      child: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          mainAxisSpacing: 10,
+          crossAxisSpacing: 10,
+          childAspectRatio: 0.93
+        ),
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        padding: EdgeInsets.all(10),
+        itemCount: goodsData.length,
+        itemBuilder: (BuildContext context,int index){
+          return initGoodsItem(goodsData[index]);
+        },
+      ),
+    );
+  }
+
+  //特价商品
+  Widget goodsListBuilder2(){
+    return Container(
+      height: 430,
+      margin: EdgeInsets.only(bottom: 35),
+      child: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 10,
+            childAspectRatio: 0.93
+        ),
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        padding: EdgeInsets.all(10),
+        itemCount: goodsData1.length,
+        itemBuilder: (BuildContext context,int index){
+          return initGoodsItem(goodsData1[index]);
+        },
+      ),
+    );
+  }
+
+  //初始化每项
+  Widget initGoodsItem(GoodsItem goodsItem){
+    return Container(
+      margin: EdgeInsets.all(4),
+      padding: EdgeInsets.all(15),
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
+          boxShadow:[
+            BoxShadow(
+                blurRadius: 6,
+                color: Color.fromARGB(20, 0, 0, 0),
+                spreadRadius: 4
+            )
+          ]
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Image.network(goodsItem.goodsImage),
+          Text(goodsItem.goodsName),
+          Container(
+            margin: EdgeInsets.only(top: 5),
+            child:Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  "¥${goodsItem.goodsPrice}",
+                  style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 18,
+                  ),
+                ),
+                Image.asset("assets/images/home_icon_buy_normal.png")
+              ],
+            )
+          )
+        ],
+      ),
+    );
+  }
 
 }
