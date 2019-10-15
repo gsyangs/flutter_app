@@ -29,6 +29,7 @@ dependencies:
   path_drawing: ^0.4.0
   flutter_screenutil: ^0.4.2
   fluttertoast: ^3.1.3
+  flutter_easyrefresh: ^1.2.7
 
 dev_dependencies:
   flutter_test:
@@ -104,6 +105,7 @@ flutter:
   - assets/images/home_icon_buy_normal.png
   - assets/images/home_images_derocation_presale.png
   - assets/images/home_images_derocation_special.png
+  - assets/images/goods_detail.png
 
   - assets/images/2.0x/home_icon_homepage_normal.png
   - assets/images/2.0x/home_icon_homepage_selected.png

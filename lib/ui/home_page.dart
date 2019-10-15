@@ -1,5 +1,8 @@
+import 'dart:ui' as prefix0;
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/ui/goods_detail.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../entity/goods_item_model.dart';
@@ -20,6 +23,8 @@ class HomePageState extends State<HomePage>{
   List<GoodsItem> goodsData = new List();
   //限时特价
   List<GoodsItem> goodsData1 = new List();
+
+  double windowTop = MediaQueryData.fromWindow(prefix0.window).padding.top;
 
   @override
   void initState() {
@@ -97,7 +102,7 @@ class HomePageState extends State<HomePage>{
               new Container(
                 alignment: Alignment.center,
                 height: 40,
-                margin: EdgeInsets.only(left: 20,top: 30),
+                margin: EdgeInsets.only(left: 20,top: windowTop + 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
@@ -120,7 +125,7 @@ class HomePageState extends State<HomePage>{
               new Container(
                 alignment: Alignment.center,
                 height: 40,
-                margin: EdgeInsets.only(right: 20,top: 30),
+                margin: EdgeInsets.only(right: 20,top: windowTop + 10),
                 child:  Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
@@ -152,7 +157,7 @@ class HomePageState extends State<HomePage>{
         //statck
         children: <Widget>[
           Container(
-            height: 220,
+            height: 220 + windowTop,
             child: bannerSwiperView(),
           ),
           bannerBottom(),
@@ -252,7 +257,7 @@ class HomePageState extends State<HomePage>{
   //banner 下弧度
   Widget bannerBottom(){
     return Container(
-      margin: EdgeInsets.only(top: 205),
+      margin: EdgeInsets.only(top: 210 + windowTop),
       child: Stack(
         fit: StackFit.passthrough,
         children: <Widget>[
@@ -262,7 +267,6 @@ class HomePageState extends State<HomePage>{
               topRight: Radius.circular(15),
             ),
             child: Container(
-              padding: EdgeInsets.fromLTRB(25,20,25,10),
               color: Colors.white,
             ),
           ),
@@ -276,7 +280,6 @@ class HomePageState extends State<HomePage>{
     return Container(
         decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(8),
             boxShadow:[
               BoxShadow(
                   blurRadius: 6,
@@ -289,8 +292,7 @@ class HomePageState extends State<HomePage>{
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           new Container(
-            color: Colors.white,
-            padding: EdgeInsets.fromLTRB(25,0,25,10),
+            padding: EdgeInsets.fromLTRB(25,10,25,10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -343,7 +345,6 @@ class HomePageState extends State<HomePage>{
             ),
           ),
           new Container(
-            color: Colors.white,
             padding: EdgeInsets.fromLTRB(25,10,25,20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -409,7 +410,7 @@ class HomePageState extends State<HomePage>{
     });
     return Container(
         alignment: Alignment.center,
-        margin: EdgeInsets.only(top: 20),
+        margin: EdgeInsets.only(top: windowTop + 10),
         padding: EdgeInsets.only(left: 15,right: 15),
         width: 250,
         height: 40,
@@ -446,14 +447,13 @@ class HomePageState extends State<HomePage>{
   //预售商品
   Widget goodsListBuilder1(){
     return Container(
-      height: 430,
       margin: EdgeInsets.only(bottom: 15),
       child: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 10,
           crossAxisSpacing: 10,
-          childAspectRatio: 0.93
+          childAspectRatio: 0.85
         ),
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
@@ -469,14 +469,13 @@ class HomePageState extends State<HomePage>{
   //特价商品
   Widget goodsListBuilder2(){
     return Container(
-      height: 430,
       margin: EdgeInsets.only(bottom: 35),
       child: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             mainAxisSpacing: 10,
             crossAxisSpacing: 10,
-            childAspectRatio: 0.93
+            childAspectRatio: 0.85
         ),
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
@@ -491,42 +490,50 @@ class HomePageState extends State<HomePage>{
 
   //初始化每项
   Widget initGoodsItem(GoodsItem goodsItem){
-    return Container(
-      margin: EdgeInsets.all(4),
-      padding: EdgeInsets.all(15),
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(8),
-          boxShadow:[
-            BoxShadow(
-                blurRadius: 6,
-                color: Color.fromARGB(20, 0, 0, 0),
-                spreadRadius: 4
+    return  GestureDetector(
+      onTap:(){
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => GoodsDetailState()),
+        );
+      },
+      child:  Container(
+        margin: EdgeInsets.all(4),
+        padding: EdgeInsets.all(15),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(8),
+            boxShadow:[
+              BoxShadow(
+                  blurRadius: 6,
+                  color: Color.fromARGB(20, 0, 0, 0),
+                  spreadRadius: 4
+              )
+            ]
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Image.network(goodsItem.goodsImage),
+            Text(goodsItem.goodsName),
+            Container(
+                margin: EdgeInsets.only(top: 5),
+                child:Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(
+                      "¥${goodsItem.goodsPrice}",
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 18,
+                      ),
+                    ),
+                    Image.asset("assets/images/home_icon_buy_normal.png")
+                  ],
+                )
             )
-          ]
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Image.network(goodsItem.goodsImage),
-          Text(goodsItem.goodsName),
-          Container(
-            margin: EdgeInsets.only(top: 5),
-            child:Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text(
-                  "¥${goodsItem.goodsPrice}",
-                  style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 18,
-                  ),
-                ),
-                Image.asset("assets/images/home_icon_buy_normal.png")
-              ],
-            )
-          )
-        ],
+          ],
+        ),
       ),
     );
   }
