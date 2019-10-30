@@ -77,7 +77,7 @@ class GoodsDetailPageState extends State<GoodsDetailState>{
       controller: SwiperController(),
       scrollDirection: Axis.horizontal,
       autoplay: true,
-      onTap: (index) => print('点击了第$index'),
+      onTap: (index) => print('点击 了第$index'),
     );
   }
 
